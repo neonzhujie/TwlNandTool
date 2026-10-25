@@ -112,7 +112,10 @@ void nandGetInfo(void) {
 	nandInfo.NAND_PNM[5] = CID[6];
 	nandInfo.NAND_PNM[6] = '\0';
     nandInfo.NAND_PRV = CID[5];
-    memcpy(nandInfo.NAND_PSN, &CID[4], 4);
+    nandInfo.NAND_PSN[0] = CID[4];
+    nandInfo.NAND_PSN[1] = CID[3];
+    nandInfo.NAND_PSN[2] = CID[2];
+    nandInfo.NAND_PSN[3] = CID[1];
     nandInfo.NAND_MDT = CID[0];
     nandInfo.NAND_MDT_MONTH = (CID[0] & 0xF0) >> 4;
     nandInfo.NAND_MDT_YEAR = (CID[0] & 0x0F) - 3;
