@@ -193,18 +193,22 @@ void printDebugIDs(Menu* m)
 {
 	if (!m) return;
 	consoleSet(cSUB);
-	iprintf("\x1b[22;0H[");
+	iprintf("\x1b[21;0H[");
 	int i;
     for (i = 8; i > 0;) {
     	i--;
         printf("%02X", consoleID[i]);
     }
-    iprintf("]\x1b[23;0H[");
+    iprintf("]\x1b[22;0H\x1B[40m[");
     for (i = 15; i > 0;) {
     	i--;
         printf("%02X", CID[i]);
     }
-    iprintf("]");
+    iprintf("]\x1B[30m");
+	iprintf("\x1b[23;0H");
+	for (int i = 0; i < 16; i++) {
+		printf("%02X", CID[i]);
+	}
 }
 
 void printMenu(Menu* m, int level)
